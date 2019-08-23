@@ -1,0 +1,17 @@
+{
+  "name": "manual",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./utils/getFilenames.js && vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "markdown-it-plantuml": "^1.4.1",
+    "mermaid": "^8.2.3",
+    "vuepress": "^1.0.3"
+  }
+}
