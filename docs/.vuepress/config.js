@@ -11,8 +11,8 @@ module.exports = module.exports = {
     themeConfig: {
         // sidebarnav 占位符  必须存在
         
-    nav: [{"text":"帮助中心","link":"/guide/"},{"text":"Hello VuePres 测试","link":"/sidebar1/"},{"text":"Hello VuePress问题","link":"/sidebar2/"}],
-    sidebar: {"/guide/":[""],"/sidebar1/":["","test"],"/sidebar2/":["","probelSide"]},
+    nav: [{"text":"帮助中心","link":"/guide/"},{"text":"Hello VuePres 测试","link":"/sidebar1/"},{"text":"Hello VuePress问题","link":"/sidebar2/"},{"text":"时间线轴","link":"/timeline/"}],
+    sidebar: {"/guide/":[""],"/sidebar1/":["","test"],"/sidebar2/":["","probelSide"],"/timeline/":[""]},
 
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
         lastUpdated: 'Last Updated', // string | boolean

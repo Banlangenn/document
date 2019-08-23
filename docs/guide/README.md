@@ -65,6 +65,16 @@
 下列特性是标准 markdown 没有的语法， 或者与标准语法不同的地方，标准语法不在列出
 :::
 
+## 时间线
+
+###  后续开发
+ - **Props**:
+
+   - `time` - string
+   - `text` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+
+
+
 ## 提示
 
 ### 标记
@@ -72,6 +82,12 @@
     Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
 ```
  Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+ - **Props**:
+
+   - `text` - string
+   - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+   - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+
 
 ### 自定义容器提示
 ```
