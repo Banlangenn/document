@@ -1,39 +1,24 @@
-export const dateFormatter = (nows) => {
-    if (!nows) return ''
-    const now = new Date(nows)
-    const year = now.getFullYear()
-   
-    const month = now.getMonth() + 1
-    month = checkAddZone(month)
-   
-    const date = now.getDate()
-    date = checkAddZone(date)
-    return year + '-' + month + '-' + date
+
+module.exports =  {
+  format(timestamp, fmt) {
+    const date = new Date(timestamp)
+    const o = {
+        'M+': date.getMonth() + 1, //月份 
+        'D+': date.getDate(), //日 
+        'h+': date.getHours(), //小时 
+        'm+': date.getMinutes(), //分 
+        's+': date.getSeconds(), //秒 
+        'q+': Math.floor((date.getMonth() + 3) / 3), //季度 
+        'S': date.getMilliseconds() //毫秒 
+    };
+    if (/(Y+)/.test(fmt)){
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    for (var k in o){
+         if (new RegExp('(' + k + ')').test(fmt)){
+             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))    
+         }
+    }
+    return fmt
   }
-   
-  function checkAddZone (num) {
-    return num<10 ? '0' + num.toString() : num
-  }
-   
-  export function dateTimeFormatter (t) {
-    if (!t) return ''
-    t = new Date(t).getTime()
-    t = new Date(t)
-    const year = t.getFullYear()
-    const month = (t.getMonth() + 1)
-    month = checkAddZone(month)
-   
-    const date = t.getDate()
-    date = checkAddZone(date)
-   
-    const hour = t.getHours()
-    hour = checkAddZone(hour)
-   
-    const min = t.getMinutes()
-    min = checkAddZone(min)
-   
-    const se = t.getSeconds()
-    se = checkAddZone(se)
-   
-    return year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + se
-  }
+}
