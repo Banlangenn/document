@@ -15,6 +15,6 @@ module.exports = module.exports = {
     sidebar: {"/guide/":[""],"/sidebar1/":["","test"],"/sidebar2/":["","probelSide"],"/timeline/":[""]},
 
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
-        lastUpdated: 'Last Updated', // string | boolean
+        lastUpdated: '上次更新:', // string | boolean
   }
 }

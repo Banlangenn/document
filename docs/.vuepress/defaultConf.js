@@ -12,6 +12,6 @@ module.exports = {
         // sidebarnav 占位符  必须存在
         /** sidebarnav */
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
-        lastUpdated: 'Last Updated', // string | boolean
+        lastUpdated: '上次更新', // string | boolean
   }
 }
