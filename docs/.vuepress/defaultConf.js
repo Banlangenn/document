@@ -1,4 +1,17 @@
+
 module.exports = {
+    plugins: [
+      [
+        '@vuepress/last-updated',
+        {
+          transformer: (timestamp, lang) => {
+            const moment = require('moment')
+            moment.locale(lang)
+            return moment().format('YYYY-MM-DD  hh:mm:ss')
+          }
+        }
+      ]
+    ],
     title: '学海',
     description: '连云课问题记录',
     base: "/",
