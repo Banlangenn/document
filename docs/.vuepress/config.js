@@ -24,8 +24,8 @@ module.exports = {
     themeConfig: {
         // sidebarnav 占位符  必须存在
         
-    nav: [{"text":"帮助中心","link":"/guide/"},{"text":"测试 ","link":"/sidebar1/"},{"text":"问题","link":"/sidebar2/"}],
-    sidebar: {"/guide/":["","timeLine"],"/sidebar1/":["","test"],"/sidebar2/":["","probelSide"]},
+    nav: [{"text":"帮助中心","link":"/guide/"},{"text":"连云课测试报告","link":"/lycTest/"},{"text":"测试 ","link":"/sidebar1/"}],
+    sidebar: {"/guide/":["","timeLine"],"/lycTest/":["","6.16联云课体验测试报告"],"/sidebar1/":["","test"]},
 
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
         lastUpdated: '上次更新', // string | boolean
