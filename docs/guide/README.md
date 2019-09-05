@@ -14,7 +14,7 @@
     │   │
     │   │
     │   ├── 文件夹1 _(**会生成一个单独sidebar 和 nav**)_
-    │   │   ├── README.md _(*根文件**)_
+    │   │   ├── README.md _(**根文件**)_
     │   │   ├── 文件1 _(**会生成一级标题**)_
     │   │   └── 文件2 _(**会生成一级标题**)_
     |   │   
@@ -76,6 +76,7 @@
    - `text` - string
    - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
    - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+ 语法示例：
 ```
     Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
 ```
@@ -88,6 +89,7 @@
 
 
 ### 自定义容器提示
+语法示例：
 ```
     ::: tip
     This is a tip
@@ -114,58 +116,19 @@ This is a dangerous warning
 :::
 
 ## Emoji
+语法示例：
 ```
     :tada: :100:
 ```
 :tada: :100:
 
-## 目录
-```
-    [[toc]]
-```
-[[toc]]
-
-## GitHub 风格的表格
-```
-    | Tables        | Are           | Cool  |
-    | ------------- |:-------------:| -----:|
-    | col 3 is      | right-aligned | $1600 |
-    | col 2 is      | centered      |   $12 |
-    | zebra stripes | are neat      |    $1 |
-```
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-## 任务列表
-```
-    - [ ] Mercury
-    - [x] Venus
-    - [x] Earth (Orbit/Moon)
-    - [x] Mars
-    - [ ] Jupiter
-    - [ ] Saturn
-    - [ ] Uranus
-    - [ ] Neptune
-    - [ ] Comet Haley
-```
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
 
 
 ## 图表
 
 
 ### 流程图1
+语法示例：
 ```
     @startuml
     node in as "input"
@@ -213,6 +176,7 @@ pp -> o
 
 
 ### 流程图2
+语法示例：
 ```
     @startuml 
     |Required Steps|
@@ -250,6 +214,7 @@ stop
 
 
 ### 流程图3
+语法示例：
 ```
     @startuml 
     (*) --> [File System ] "input.json " 
@@ -302,31 +267,60 @@ end note
 @enduml
 
 
-### 流程图4
+### 前端代理4
 
-```
+
    <mermaid>
         graph TD
-        A[模块A] -->|A1| B(模块B)
-        B --> C{判断条件C}
-        C -->|条件C1| D[模块D]
-        C -->|条件C2| E[模块E]
-        C -->|条件C3| F[模块F]
-        F -->|条件C5| A[模块F]
+         A[浏览器接口] --> |自定义url前缀| B(静态文件服务器)
+       B--> Q{nginx}
+    Q--> C[分析url前缀指向]
+    C --> Z(/monitor/api..)
+    Z -->|还原url| F[监控服务1]
+    C --> X(/convert/api.. )
+    X -->|还原url| G[转换服务2]
+    C --> M(/repair/api..)
+    M -->|还原url为/api| H[接口修复服务3]
+    C --> N(/manage/api..)
+    N -->|还原url| J[node管理台服务4]
+
+ </mermaid>
+     
+```
+server {
+    location /monitor/ {
+            proxy_pass http://127.0.0.1:7000/;
+    }
+    location /convert/ {
+            proxy_pass http://127.0.0.1:7001/;
+    }
+    location /repair/ {
+            proxy_pass http://127.0.0.1:7002/;
+    }
+    location /manage/ {
+            proxy_pass http://127.0.0.1:7003/;
+    }
+}
+```
+
+### 时序图
+语法示例：
+```
+   <mermaid>
+       sequenceDiagram
+        A->>B: 是否已收到消息？
+        B-->>A: 已收到消息
     </mermaid>
 ```
 <mermaid>
-    graph TD
-    A[模块A] -->|A1| B(模块B)
-    B --> C{判断条件C}
-    C -->|条件C1| D[模块D]
-    C -->|条件C2| E[模块E]
-    C -->|条件C3| F[模块F]
-    F -->|条件C5| A[模块F]
+   sequenceDiagram
+    A->>B: 是否已收到消息？
+    B-->>A: 已收到消息
 </mermaid>
 
-### 甘特图
 
+### 甘特图
+语法示例：
 ```
     <mermaid>
         gantt

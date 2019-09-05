@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./utils/getFilenames.js && vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "node ./utils/getFilenames.js &&vuepress build docs"
   },
   "author": "",
   "license": "ISC",

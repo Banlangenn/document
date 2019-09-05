@@ -1,11 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-
 const FOLDERPATH = './docs/';
-
-const whiteList = ['optManual'] // 'guide'
-
+const whiteList = ['optManual', '6.16联云课体验测试报告', '联云课使用手册', '联云课排版格式调整'] // 'guide'
 const configPath = './../docs/.vuepress/defaultConf.js'
+// const md5 = require('md5');
 
 // config
 let sidebar = {} 
@@ -22,6 +20,25 @@ function fileDisplay(parentName, filePath, deep) {
     sidebar[parentName] = []
     let parentMap = sidebar[parentName] 
     let files = fs.readdirSync(filePath)
+    // parentMap(
+    //     {
+    //         title: pluginTitle,
+    //         collapsable: false,
+    //         children: [
+    //           ['', pluginIntro],
+    //           'using-a-plugin',
+    //           'writing-a-plugin',
+    //           'life-cycle',
+    //           'option-api',
+    //           'context-api'
+    //         ]
+    //       },
+    //       {
+    //         title: officialPluginTitle,
+    //         collapsable: false,
+    //         children: officalPlugins,
+    //       }
+    // )
     // 遍历读取到的文件列表
     files.forEach(function(filename){
         //获取当前文件的绝对路径
@@ -43,7 +60,11 @@ function fileDisplay(parentName, filePath, deep) {
                 })
                 parentMap.unshift(filename)
             } else {
-                parentMap.push(filename)
+                // 这是文件名称---- 这里 push  进去的是文件名称
+                if (!whiteList.includes(filename)) {
+                    parentMap.push(filename)
+                }
+                
             }
             
         }
@@ -66,11 +87,6 @@ console.log('sidebar')
 console.log(sidebar)
 console.log('nav')
 console.log(nav)
-// config.themeConfig = {
-//     ...config.themeConfig,
-//     sidebar,
-//     nav
-// }
 config  = config.replace(/\/\*\*\s*sidebarnav\s*\*\//,`
     nav: ${JSON.stringify(nav)},
     sidebar: ${JSON.stringify(sidebar)},
